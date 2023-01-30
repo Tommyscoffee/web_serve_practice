@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 01:33:11 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/29 15:49:18 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/30 00:23:49 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include "sessionman.h"
-#define MAX_ATTENDANTS 5
+#include <fcntl.h>
+
+#define MAX_ATTENDANTS	5
 #define BUF_LEN			80
 
-static char buf[BUF_LEN];//送受信バッファ
-static fd_set mask;//selectよう初期化マスク
-static int width;//監視ディスクリプタの範囲
-static int attendants;//参加人数
+static char 	buf[BUF_LEN];//送受信バッファ
+static fd_set 	mask;//selectよう初期化マスク
+static int 		width;//監視ディスクリプタの範囲
+static int 		attendants;//参加人数
 
 //参加者管理のためのデータ構造
 typedef struct
@@ -44,6 +46,8 @@ void enter(int i, int fd)
 	static char *mesg1="Type your name\n";
 	static char *mesg2="Wait\n";
 
+	fprintf(stderr, "enter()\n");
+	fprintf(stderr, "fd = %d\n", p[i].fd);
 	p[i].fd = fd;
 	memset(p[i].name, 0, 16);
 	write(fd, mesg1, strlen(mesg1));
@@ -60,7 +64,7 @@ void sessionman_init(int num, int maxfd)
 	attendants = num;
 
 	//selectのためのマスク準備
-	width - maxfd +1;
+	width - maxfd + 1;
 	FD_ZERO(&mask);
 	FD_SET(0, &mask);
 	for(i = 0; i < num; i++)
@@ -71,8 +75,20 @@ void sessionman_init(int num, int maxfd)
 	//セッション開始のメッセージを全員に送る
 	for (i = 0; i < num; i++)
 	{
+		fprintf(stderr, "p[%d].fd = %d\n", i, p[i].fd);
 		write(p[i].fd, mesg, strlen(mesg));
 	}
+}
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void printb(unsigned int v) {
+  unsigned int mask = (int)1 << (sizeof(v) * 8 - 1);
+  do ft_putchar(mask & v ? '1' : '0');
+  while (mask >>= 1);
 }
 
 //セッションのメインループ
@@ -80,25 +96,29 @@ void sessionman_loop()
 {
 	fd_set readOk;//selectのためのマスク
 	int i;
-
+	fprintf(stderr, "sessionman_loop()\n");
 	while(1)
 	{
+		fprintf(stderr, "while()内\n");
 		readOk = mask;
-		select(width, (fd_set *)&readOk, NULL, NULL, NULL);
-	}
+		// fcntl(p[i].fd, F_SETFL, O_NONBLOCK);
+		fprintf(stderr, "readOk = %d\n",  readOk.fds_bits);
+		select(width, (fd_set *)&readOk, NULL, NULL, 1000);
+		fprintf(stderr, "select後\n");
+		//キーボードからの入力ありか?
+		// if (FD_ISSET(0, &readOk) )//サーバーのオペレータが何かキー入力をするとセッションが終了する。
+		// 	ending();
 
-	//キーボードからの入力ありか?
-	if (FD_ISSET(0, &readOk))//サーバーのオペレータが何かキー入力をするとセッションが終了する。
-		ending();
-
-	//ソケットを順に調べる
-	for(i = 0; i < attendants; i++)//データのきているソケットを調べてreadし、それをすぐ全参加者に配信する
-	{
-		if ( FD_ISSET(p[i].fd, &readOk))
+		//ソケットを順に調べる
+		for(i = 0; i < attendants; i++)//データのきているソケットを調べてreadし、それをすぐ全参加者に配信する
 		{
-			int n;
-			n = read(p[i].fd, buf, BUF_LEN);
-			send_all(i, n);
+			fprintf(stderr, "read\n");
+			if ( FD_ISSET(p[i].fd, &readOk))
+			{
+				int n;
+				n = read(p[i].fd, buf, BUF_LEN);
+				send_all(i, n);
+			}
 		}
 	}
 }
@@ -119,6 +139,7 @@ static void send_all(int i, int n)
 
 	for(j = 0; j < attendants; j++)
 	{
+		fprintf(stderr, "send_all()\n");
 		write(p[j].fd, p[j].name, strlen(p[i].name));
 		write(p[j].fd, buf, n);
 	}

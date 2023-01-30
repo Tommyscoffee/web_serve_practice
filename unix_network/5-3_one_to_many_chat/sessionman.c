@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 01:33:11 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/30 00:23:49 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:14:39 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void sessionman_init(int num, int maxfd)
 	attendants = num;
 
 	//selectのためのマスク準備
-	width - maxfd + 1;
+	width = maxfd + 1;
 	FD_ZERO(&mask);
 	FD_SET(0, &mask);
 	for(i = 0; i < num; i++)
@@ -127,7 +127,7 @@ static void ending()
 {
 	int i;
 	for(i = 0; i < attendants; i++)
-		write(p[i].fd, 'q', 1);
+		write(p[i].fd, "q", 1);
 	for( i = 0; i < attendants; i++ )
 		close(p[i].fd);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:16:31 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/29 15:52:57 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:15:17 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int main()
 	//サーバのホスト名の入力
 	// printf("input server's hostname");
 	// fgets(hostname, HOSTNAME_LENGTH, stdin);
-	// chop_newline(hostname, HOSTNAME_LENGTH,);
-	// hostname = "127.0.0.1"; 
+	// chop_newline(hostname, HOSTNAME_LENGTH);
 	//接続まで
 	if((soc = setup_client("127.0.0.1", PORT)) == -1)
 	{

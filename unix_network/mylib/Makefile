@@ -6,11 +6,11 @@
 #    By: akihito <akihito@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 16:41:47 by atomizaw          #+#    #+#              #
-#    Updated: 2023/01/30 03:04:00 by akihito          ###   ########.fr        #
+#    Updated: 2023/01/30 15:28:52 by akihito          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS = setup_client.o setup_server.o chop_newline.o setup_mserver2.o
+OBJS = setup_client.o setup_server.o chop_newline.o setup_mserver.o
 AR = ar -qc
 
 mylib.a: $(OBJS)

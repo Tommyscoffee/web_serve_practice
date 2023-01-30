@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylib.h                                            :+:      :+:    :+:   */
+/*   session.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:37:36 by atomizaw          #+#    #+#             */
-/*   Updated: 2023/01/30 00:24:38 by akihito          ###   ########.fr       */
+/*   Created: 2023/01/30 02:58:25 by akihito           #+#    #+#             */
+/*   Updated: 2023/01/30 03:11:48 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
-#include <netdb.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "sessionman.h"
 
-extern int setup_server(in_port_t port);
-extern int setup_client(char *hostname, in_port_t port);
-extern int mserver_socket(in_port_t port, int num);
-extern int mserver_maccept(int soc, int limit, void (*func)());
-extern char *chop_newline(char *buf, int len);
+#define HOSTNAME_LENGTH 64
 
-
+extern void session_init(int soc);
+extern void session_loop();

@@ -9,14 +9,14 @@ int setup_client(char *hostname, in_port_t port)//接続先のポート
 	server_ent = gethostbyname(hostname);
 	if (server_ent == NULL)
 	{
-		perror('gethostbyname');
+		perror("gethostbyname");
 		return (-1);
 	}
 	//接続先のアドレスをsockaddr_in 構造体に設定
 	memset((char *)&server, 0, sizeof(server));
 	server.sin_family = AF_INET;
 	server.sin_port = htons(port);
-	memcpy((char*)&server.sin_addr, server_ent->h_addr, server_ent->h_length);
+	memcpy((char *)&server.sin_addr, server_ent->h_addr, server_ent->h_length);
 	//IPv4でストリーム型のソケットをさくせ
 	soc = socket(AF_INET, SOCK_STREAM, 0);
 	if (soc < 0)

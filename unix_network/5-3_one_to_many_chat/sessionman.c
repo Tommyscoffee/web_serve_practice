@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 01:33:11 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/30 15:14:39 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:18:48 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void enter(int i, int fd)
 	static char *mesg2="Wait\n";
 
 	fprintf(stderr, "enter()\n");
-	fprintf(stderr, "fd = %d\n", p[i].fd);
+	fprintf(stderr, "fd = %d\n", fd);
 	p[i].fd = fd;
 	memset(p[i].name, 0, 16);
 	write(fd, mesg1, strlen(mesg1));

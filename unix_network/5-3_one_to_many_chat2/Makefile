@@ -5,22 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: akihito <akihito@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/23 16:41:47 by atomizaw          #+#    #+#              #
-#    Updated: 2023/01/30 03:04:00 by akihito          ###   ########.fr        #
+#    Created: 2023/01/27 14:07:13 by akihito           #+#    #+#              #
+#    Updated: 2023/01/30 02:59:58 by akihito          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS = setup_client.o setup_server.o chop_newline.o setup_mserver2.o
-AR = ar -qc
+MYLIBDIR = ../mylib
+MYLIB = $(MYLIBDIR)/mylib.a
+OBJS1 = server.o sessionman.o
+OBJS2 = client.o session.o
+CFLAGS = -I$(MYLIBDIR)
 
-mylib.a: $(OBJS)
-	$(RM) $@
-	$(AR) $@ $(OBJS)
-$(warning AR = $(AR))
-$(warning OBJS = $(OBJS))
-$(OBJS):	mylib.h
+all: s c
+
+s: $(OBJS1)
+	$(CC) -o $@ $^ $(MYLIB) -lcurses
+
+c: $(OBJS2)
+	$(CC) -o $@ $^ $(MYLIB) -lcurses
+
+server.o: sessionman.h
+
+client.o: session.h
 
 clean:
-	$(RM) *.o mylib.a
+	$(RM) s c $(OBJS1) $(OBJS2) *~
 
-re: clean mylib.a
+fclean: clean 
+
+mylib_clean:
+	make -C $(MYLIBDIR) clean
+mylib:
+	make -C $(MYLIBDIR)
+re: mylib_clean fclean mylib all

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylib.h                                            :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:37:36 by atomizaw          #+#    #+#             */
-/*   Updated: 2023/01/30 00:24:38 by akihito          ###   ########.fr       */
+/*   Created: 2023/01/30 02:56:13 by akihito           #+#    #+#             */
+/*   Updated: 2023/01/30 03:14:04 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "session.h"
+#include "sessionman.h"
+#include "../mylib/mylib.h"
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
 
-extern int setup_server(in_port_t port);
-extern int setup_client(char *hostname, in_port_t port);
-extern int mserver_socket(in_port_t port, int num);
-extern int mserver_maccept(int soc, int limit, void (*func)());
-extern char *chop_newline(char *buf, int len);
+int main()
+{
+	int soc;
+	char hostname[HOSTNAME_LENGTH];
 
+	// printf("input server's hostname:");
+	// fgets(hostname, HOSTNAME_LENGTH, stdin);
+	// chop_newline(hostname, HOSTNAME_LENGTH);
 
+	soc = setup_client("127.0.0.1", PORT);
+	if (soc == -1)
+		exit(1);
+	
+	session_init(soc);
+
+	session_loop();
+}

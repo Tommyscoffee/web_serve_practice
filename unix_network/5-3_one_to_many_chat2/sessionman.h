@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylib.h                                            :+:      :+:    :+:   */
+/*   sessionman.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 20:37:36 by atomizaw          #+#    #+#             */
-/*   Updated: 2023/01/30 00:24:38 by akihito          ###   ########.fr       */
+/*   Created: 2023/01/30 01:41:57 by akihito           #+#    #+#             */
+/*   Updated: 2023/01/30 03:03:15 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
-#include <netdb.h>
-#include <string.h>
 #include <unistd.h>
-#include <stdlib.h>
 
-extern int setup_server(in_port_t port);
-extern int setup_client(char *hostname, in_port_t port);
-extern int mserver_socket(in_port_t port, int num);
-extern int mserver_maccept(int soc, int limit, void (*func)());
-extern char *chop_newline(char *buf, int len);
+#define	PORT (in_port_t)5552
+#define MAX_ATTENDANTS 5
+#define BUF_LEN 80
 
-
+extern void enter();
+extern void sessionman_init(int  num, int maxfd);
+extern void sessionman_loop();

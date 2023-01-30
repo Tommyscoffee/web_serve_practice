@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"curses.h": "c",
+		"types.h": "c",
+		"__config": "c"
+	}
+}

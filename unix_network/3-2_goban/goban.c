@@ -45,7 +45,7 @@ int goban_peer_turn()
 	printf("r_count : %d\n", r_count);
 	printf("errno:  %d\n", errno);
 
-	data[r_count] = '\0';
+	// data[r_count] = '\0';
 	//先頭バイトを見てから終了か判定
 	if (data[0] == 'q')
 		return (-1);

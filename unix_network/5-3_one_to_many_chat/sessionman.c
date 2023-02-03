@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 01:33:11 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/30 15:18:48 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/31 00:49:38 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ void enter(int i, int fd)
 	fprintf(stderr, "fd = %d\n", fd);
 	p[i].fd = fd;
 	memset(p[i].name, 0, 16);
+	fprintf(stderr, mesg1);
+	// fprintf()
 	write(fd, mesg1, strlen(mesg1));
 	len = read(fd, p[i].name, 16);
 	sprintf(p[i].name + len - 1, " --> ");
 	write(fd, mesg2, strlen(mesg2));
+	
 }
 
 //セッションの初期化
@@ -120,6 +123,10 @@ void sessionman_loop()
 				send_all(i, n);
 			}
 		}
+		// wrefresh(frame_recv);
+		// wrefresh(win_recv);
+		// wrefresh(frame_send);
+		// wrefresh(win_send);
 	}
 }
 

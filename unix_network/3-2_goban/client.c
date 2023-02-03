@@ -9,12 +9,12 @@ int main()
 
 	//サーバーのホスト名の入力
 	printf("input server's hostname: 127.0.0.1 ");
-	// fgets(hostname, HOSTNAME_LENGTH, stdin);
-	// chop_newline(hostname, HOSTNAME_LENGTH);
+	fgets(hostname, HOSTNAME_LENGTH, stdin);
+	chop_newline(hostname, HOSTNAME_LENGTH);
 
 	//接続完了まで
 	printf("\n===\n");
-	soc = setup_client("localhost", PORT);
+	soc = setup_client(hostname, PORT);
 	printf("===\n");
 
 	if( soc == -1)

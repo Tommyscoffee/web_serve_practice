@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:47:44 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/29 22:52:16 by akihito          ###   ########.fr       */
+/*   Updated: 2023/01/31 21:28:30 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ void session_init(int soc,
 	noecho();
 }
 
-void ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+// void ft_putchar(char c)
+// {
+// 	write(1, &c, 1);
+// }
 
-void printb(unsigned int v) {
-  unsigned int mask = (int)1 << (sizeof(v) * 8 - 1);
-  do ft_putchar(mask & v ? '1' : '0');
-  while (mask >>= 1);
-}
+// void printb(unsigned int v) {
+//   unsigned int mask = (int)1 << (sizeof(v) * 8 - 1);
+//   do ft_putchar(mask & v ? '1' : '0');
+//   while (mask >>= 1);
+// }
 
 //sessionメインループ
 void session_loop()
@@ -110,7 +110,7 @@ void session_loop()
 	{
 		//selectの前に毎回readOkを初期化する
 		readOk = mask;
-		printb(readOk.fds_bits);
+		// printb(readOk.fds_bits);
 		select(width, (fd_set *)&readOk, NULL, NULL, NULL);
 
 		//キーボードからの入力ありか？

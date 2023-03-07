@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 20:37:36 by atomizaw          #+#    #+#             */
-/*   Updated: 2023/01/30 00:24:38 by akihito          ###   ########.fr       */
+/*   Updated: 2023/02/27 19:41:24 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <netdb.h>
+#include <netdb.h> 
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>

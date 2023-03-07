@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 17:26:23 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/30 00:24:26 by akihito          ###   ########.fr       */
+/*   Updated: 2023/03/07 19:43:20 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 
 	fprintf(stderr, "soc = %d\n", soc);
 	//m_acceptにコールバック関数のenterを渡す帰ってくるのは最大のディスクリプタ
-	maxfd = mserver_maccept(soc, num, enter);
+	maxfd = mserver_maccept(soc, num, &enter);
 	if (maxfd != 0)
 	{	
 		fprintf(stderr, "mserver_accept success\n");

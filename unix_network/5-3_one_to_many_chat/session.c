@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 02:13:16 by akihito           #+#    #+#             */
-/*   Updated: 2023/01/31 00:49:35 by akihito          ###   ########.fr       */
+/*   Updated: 2023/03/07 19:17:41 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void session_loop()
 			n = read(session_soc, recv_buf, BUF_LEN);
 			for(i = 0; i < n; i++)
 			{
-				fprintf(stderr, "FD_ISSET(session_soc, &readOk)\n");
+				// fprintf(stderr, "FD_ISSET(session_soc, &readOk)\n");
 				waddch(win_recv, recv_buf[i]);
 			}
 

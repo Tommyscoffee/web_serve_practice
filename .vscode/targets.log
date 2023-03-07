@@ -7,14 +7,18 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Mar  6 15:21:56 2023
+# Make data base, printed on Thu Feb 23 17:29:15 2023
 
 # Variables
 
+# environment
+VSCODE_GIT_ASKPASS_MAIN = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 NODENV_SHELL = zsh
 # automatic
@@ -22,7 +26,7 @@ NODENV_SHELL = zsh
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/akihito/42tokyo/42cursus/level5/webserv/practice/unix_network
+CURDIR := /Users/akihito/42tokyo/42cursus/level5/webserv/practice
 # makefile
 SHELL = /bin/sh
 # environment
@@ -34,13 +38,17 @@ _ = /usr/bin/make
 # makefile
 MAKEFILE_LIST := 
 # environment
+VSCODE_INJECTION = 1
+# environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/akihito/42tokyo/42cursus/level5/webserv/practice
 # environment
-PATH = /Users/akihito/.nodenv/shims:/Users/akihito/.nodenv/bin:/usr/local/opt/mysql@5.7/bin:/Users/akihito/.nodebrew/current/bin:/Users/akihito/.nodenv/shims:/Users/akihito/.pyenv/shims:/Users/akihito/.pyenv/bin:/Users/akihito/Library/Python/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin
+PATH = /Users/akihito/.nodenv/shims:/Users/akihito/.nodenv/bin:/usr/local/opt/mysql@5.7/bin:/Users/akihito/.nodebrew/current/bin:/Users/akihito/.nodenv/shims:/Users/akihito/.pyenv/shims:/Users/akihito/.pyenv/bin:/Users/akihito/Library/Python/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/akihito/.nodenv/shims:/Users/akihito/.nodenv/bin:/usr/local/opt/mysql@5.7/bin:/Users/akihito/.nodebrew/current/bin:/Users/akihito/.pyenv/bin:/Users/akihito/Library/Python/3.9/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin
 # environment
-LaunchInstanceID = 4B305346-3B6D-440C-B68B-BE5466E4F164
+ZDOTDIR = /Users/akihito
+# environment
+LaunchInstanceID = 68099ABE-9344-41DE-B4C0-4DD45409FF51
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
@@ -48,13 +56,13 @@ PYENV_ROOT = /Users/akihito/.pyenv
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.WWkRtNyYI5/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MRa1IXCrft/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = /private/tmp/com.apple.launchd.gpZeHyYYKR/org.xquartz:0
+DISPLAY = /private/tmp/com.apple.launchd.pdKVpwIYOd/org.xquartz:0
 # environment
-PWD = /Users/akihito/42tokyo/42cursus/level5/webserv/practice/unix_network
+PWD = /Users/akihito/42tokyo/42cursus/level5/webserv/practice
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -66,6 +74,8 @@ HOME = /Users/akihito
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
+VSCODE_CLI = 1
+# environment
 VSCODE_CODE_CACHE_PATH = /Users/akihito/Library/Application Support/Code/CachedData/97dec172d3256f8ca4bfb2143f3f76b503ca0534
 # environment
 LOGNAME = akihito
@@ -76,13 +86,17 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
+MAKELEVEL := 0
+# environment
 XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 3
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -93,6 +107,10 @@ USER = akihito
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+VSCODE_GIT_ASKPASS_EXTRA_ARGS = --ms-enable-electron-run-as-node
+# environment
+TERM_PROGRAM = vscode
 # default
 .VARIABLES := 
 # environment
@@ -102,6 +120,8 @@ TMPDIR = /var/folders/_y/r11bfc851697zjcp5yfmbl4w0000gn/T/
 # environment
 VSCODE_IPC_HOOK = /Users/akihito/Library/Application Support/Code/1.74.3-main.sock
 # environment
+VSCODE_GIT_ASKPASS_NODE = /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper
+# environment
 MallocNanoZone = 0
 # makefile
 MAKEFLAGS = Rrqp
@@ -110,7 +130,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.53472796.53472818
+TERM_PROGRAM_VERSION = 1.74.3
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.53472796.53472818.268B9DE6-B1D3-469A-8514-90F7DFA98445
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -119,14 +141,18 @@ XPC_SERVICE_NAME = application.com.microsoft.VSCode.53472796.53472818
 __CF_USER_TEXT_ENCODING = 0x1F5:0x1:0xE
 # environment
 COMMAND_MODE = unix2003
+# environment
+GIT_ASKPASS = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
 # default
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
 # environment
+USER_ZDOTDIR = /Users/akihito
+# environment
 LC_ALL = C
 # environment
-SECURITYSESSIONID = 186a4
+SECURITYSESSIONID = 186a3
 # automatic
 ^F = $(notdir $^)
 # default
@@ -134,13 +160,15 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
-MAKELEVEL := 0
+VSCODE_GIT_IPC_HANDLE = /var/folders/_y/r11bfc851697zjcp5yfmbl4w0000gn/T/vscode-git-8da58584e5.sock
 # environment
 LANG = C
 # environment
-VSCODE_PID = 487
+TERM = xterm-256color
+# environment
+VSCODE_PID = 478
 # variable set hash-table stats:
-# Load=64/1024=6%, Rehash=0, Collisions=2/85=2%
+# Load=78/1024=8%, Rehash=0, Collisions=4/99=4%
 
 # Pattern-specific Variable Values
 
@@ -148,9 +176,9 @@ VSCODE_PID = 487
 
 # Directories
 
-# . (device 16777220, inode 53553928): 14 files, no impossibilities.
+# . (device 16777220, inode 52628728): 12 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -222,7 +250,7 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Mon Mar  6 15:21:56 2023
+# Finished Make data base on Thu Feb 23 17:29:15 2023
 
  
 make: *** No rule to make target `all'.  Stop.
